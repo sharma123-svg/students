@@ -60,6 +60,18 @@ def get_students():
 # SEARCH STUDENT BY NAME
 # =========================
 
+@app.get("/students/search")
+def search_student(name: str):
+
+    results = []
+
+    for student in students:
+        if name.lower() in student["name"].lower():
+            results.append(student)
+
+    return {
+        "students": results
+    }
 
 
 # =========================
@@ -75,6 +87,10 @@ def get_students_by_course(course_name: str):
         if student["course"].lower() == course_name.lower():
             results.append(student)
 
+    return {
+        "course": course_name,
+        "students": results
+    }
 
 
 # =========================
