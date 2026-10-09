@@ -75,6 +75,10 @@ def get_students_by_course(course_name: str):
         if student["course"].lower() == course_name.lower():
             results.append(student)
 
+    return {
+        "course": course_name,
+        "students": results
+    }
 
 
 # =========================
